@@ -6,20 +6,28 @@ pipeline {
         maven "mymaven"
     }
 
+    parameters{
+
+
+        string(name: 'ENV', defaultValue: 'Test', description: 'version to deploy')
+        booleanParam(name: 'executeTest', defaultValue: true, description: 'decide to run tc')
+        choice(name: 'APPVERSION', choices: ['1.1', '1.2', '1.3'])
+    }
+
     stages {
         stage('Compile') {
             steps {
-               echo "compiling teh code"
+               echo "compiling the code ${params.APPVERSION}"
             }
         }
         stage('UnitTest') {
             steps {
-               echo "Test teh code"
+               echo "Test the code$"
             }
         }
         stage('Package') {
             steps {
-               echo "Package teh code"
+               echo "Package the code ${params.ENV}"
             }
         }
     }
