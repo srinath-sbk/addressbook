@@ -22,7 +22,7 @@ pipeline {
         }
         stage('UnitTest') {
             steps {
-               echo "Test the code $"
+               echo "Test the code$"
             }
         }
         stage('Package') {
